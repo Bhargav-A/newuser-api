@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Call</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<script>
+    async function getData(){
+        const response = await fetch("https://randomuser.me/api/");
+        const data = await response.json();
+        const user = data.results[0];
+        let {title,first,last} = user.name;
+        let fullname = title+" "+first+" "+last;
+        document.getElementById("name").innerHTML=fullname;
+        let gender = user.gender;
+        document.getElementById("gender").innerHTML=gender;
+        let age = user.dob.age;
+        document.getElementById("age").innerHTML=age;
+        let email = user.email;
+        //document.getElementById("email").href = "mailto:" + email;
+        document.getElementById("email").innerHTML = email;
+        document.getElementById("email").href="mailto:" + email;
+        let image = user.picture.large;
+        document.getElementById("pic").src=image;
+
+        /*
+        
+        const number = data.results[0].phone;
+        document.getElementById("phone").innerHTML=number;
+        const number = data.results[0].phone;
+        document.getElementById("phone").innerHTML=number;
+        */
+        const number = user.phone;
+        document.getElementById("phone").href="tel:"+number;
+        document.getElementById("phone").innerHTML=number;
+        
+
+        console.log(data.results);
+        console.log(data.results[0].phone);
+        
+    }
+    getData();
+</script>
+<body>
+    
+    <div class="container">
+        <h3>New Users</h3>
+        <div class="row">
+            <label style="align-self: center;">Name</label>
+            <p id="name"></p>
+        </div>
+        <div class="row">
+            <label style="align-self: center;">Picture</label>
+            <img id="pic" src="">
+        </div>
+        <div class="row">
+            <label style="align-self: center;">Gender</label>
+            <p id="gender"></p>
+        </div>
+        <div class="row">
+            <label style="align-self: center;">Age</label>
+            <p id="age"></p>
+        </div>
+        <div class="row">
+            <label style="align-self: center;">Email</label>
+            <p id="email"></p>
+        </div>
+        <div class="row">
+            <label style="align-self: center;">Phone Number</label>
+            <p id="phone"></p>
+        </div>
+        <div class="row">
+            <button onclick="location.reload()">New User</button>
+        </div>
+        
+    </div>
+
+</body>
+</html>

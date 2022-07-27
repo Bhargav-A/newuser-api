@@ -1,0 +1,20 @@
+.container{
+    width: 50%;
+    /*top: 10%;
+    transform: translate(0, -50%);*/
+    margin: auto;
+    text-align: center;
+    margin-top: 20%;
+}
+.row{
+    display: flex;
+    justify-content: space-between;
+}
+button{
+    cursor: pointer;
+    background-color: aqua;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+}
